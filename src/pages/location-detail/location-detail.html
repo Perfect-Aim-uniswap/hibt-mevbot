@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar coloe="orange">
+    <ion-title>
+      {{ location.name }}
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Close
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      {{ location.name }}
+    </ion-card-header>
+    <ion-slides pager *ngIf="location.images.length > 0">
+
+      <ion-slide *ngFor="let image of location.images">
+        <img src="http://b.hib.life/images/locations/{{image}}" />
+      </ion-slide>
+
+    </ion-slides>
+
+    <ion-fab right top>
+      <button ion-fab (click)="openMap()">
+      <ion-icon name="pin"></ion-icon>
+    </button>
+    </ion-fab>
+    <ion-card-content>
+      <div [innerHTML]="location.detail | nlbr"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

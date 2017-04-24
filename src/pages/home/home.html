@@ -1,0 +1,13 @@
+
+<ion-content padding>
+  <div class="container">
+    <img src="images/HIB01_200.png" class="img-responsive center-block" />
+    <ion-item>
+      <ion-input type="text" placeholder="Tour Code" [(ngModel)]="tourCode"></ion-input>
+      <button clear item-right ion-button icon-only (click)="scanQR()"><ion-icon item-right name="camera"></ion-icon></button>
+    </ion-item>
+    <button ion-button block  color="danger" (click)="getTour()">GO</button>
+    <br />
+    <span class="red-text">{{ statusText }}</span>
+  </div>
+</ion-content>

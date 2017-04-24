@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar hideBackButton color="hib">
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title><img src="images/HIB01_icon.png" /></ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <h6>{{ tour.Package.PackageName }}</h6>
+    <ion-item>
+        <ion-label>
+            <ion-icon name="calendar"></ion-icon>
+        </ion-label>
+        <ion-select [(ngModel)]="day">
+            <ion-option *ngFor="let dayItem of dayList" [value]="dayItem.value">{{dayItem.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-card *ngFor="let iti of itineraries | filter: { Day: day} | orderBy: 'Sequence'" (click)="openLocation(iti.Location)">
+        <ion-card-header>
+            {{ iti.TimeFrom }}: {{ findLocation(iti.Location.Details).LocationName }}
+        </ion-card-header>
+        <img src="{{getFirstImageFile(iti.Location.ImageFiles)}}" *ngIf="getFirstImageFile(iti.Location.ImageFiles) != ''"/>
+        <ion-card-content>
+            <div [innerHTML]="iti.Description | nlbr"></div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

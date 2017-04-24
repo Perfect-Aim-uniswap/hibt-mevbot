@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar hideBackButton color="hib">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+        <ion-title><img src="images/HIB01_icon.png" /></ion-title>
+        <ion-buttons end>
+        <button ion-button icon-only color="royal" (click)="update()">
+          <ion-icon name="refresh"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <h6>Message</h6>
+ <ion-card *ngFor="let message of messages | filter: { IsGuide: true} | orderBy: 'SentDateTime' : true">
+        <ion-card-header>
+            {{message.SentDateTime + 'Z' | date:'medium'}}
+        </ion-card-header>
+        <ion-card-content>
+            <div [innerHTML]="message.sMessage | nlbr"></div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="hib">
+    <p>Send message to guide</p>
+    <ion-buttons end>
+      <button ion-button icon-right color="royal">
+        Click here
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

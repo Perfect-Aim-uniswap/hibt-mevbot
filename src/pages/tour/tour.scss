@@ -1,0 +1,16 @@
+page-tour {
+    ion-select {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .item-select ion-label {
+        max-width: 45px;
+        min-width: 45px;
+    }
+
+    #select-option {
+        margin-right: auto;
+        width: 100%;
+    }
+}
